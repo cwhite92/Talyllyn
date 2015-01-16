@@ -30,5 +30,7 @@ namespace SOFT331.Models
         }
 
         public System.Data.Entity.DbSet<SOFT331.Models.Train> Trains { get; set; }
+
+        public System.Data.Entity.DbSet<SOFT331.Models.FareGroup> FareGroups { get; set; }
     }
 }

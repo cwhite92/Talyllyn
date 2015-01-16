@@ -11,18 +11,18 @@ using SOFT331.Models;
 namespace SOFT331.Controllers
 {
     [Authorize(Roles = "Admin")]
-    public class TrainsController : Controller
+    public class FareGroupsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Trains
+        // GET: FareGroups
         [AllowAnonymous]
         public ActionResult Index()
         {
-            return View(db.Trains.ToList());
+            return View(db.FareGroups.ToList());
         }
 
-        // GET: Trains/Details/5
+        // GET: FareGroups/Details/5
         [AllowAnonymous]
         public ActionResult Details(int? id)
         {
@@ -30,90 +30,90 @@ namespace SOFT331.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Train train = db.Trains.Find(id);
-            if (train == null)
+            FareGroup fareGroup = db.FareGroups.Find(id);
+            if (fareGroup == null)
             {
                 return HttpNotFound();
             }
-            return View(train);
+            return View(fareGroup);
         }
 
-        // GET: Trains/Create
+        // GET: FareGroups/Create
         public ActionResult Create()
         {
-            return View(new Train());
+            return View();
         }
 
-        // POST: Trains/Create
+        // POST: FareGroups/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,Year,Capacity")] Train train)
+        public ActionResult Create([Bind(Include = "Id,Name")] FareGroup fareGroup)
         {
             if (ModelState.IsValid)
             {
-                db.Trains.Add(train);
+                db.FareGroups.Add(fareGroup);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(train);
+            return View(fareGroup);
         }
 
-        // GET: Trains/Edit/5
+        // GET: FareGroups/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Train train = db.Trains.Find(id);
-            if (train == null)
+            FareGroup fareGroup = db.FareGroups.Find(id);
+            if (fareGroup == null)
             {
                 return HttpNotFound();
             }
-            return View(train);
+            return View(fareGroup);
         }
 
-        // POST: Trains/Edit/5
+        // POST: FareGroups/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,Year,Capacity")] Train train)
+        public ActionResult Edit([Bind(Include = "Id,Name")] FareGroup fareGroup)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(train).State = EntityState.Modified;
+                db.Entry(fareGroup).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(train);
+            return View(fareGroup);
         }
 
-        // GET: Trains/Delete/5
+        // GET: FareGroups/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Train train = db.Trains.Find(id);
-            if (train == null)
+            FareGroup fareGroup = db.FareGroups.Find(id);
+            if (fareGroup == null)
             {
                 return HttpNotFound();
             }
-            return View(train);
+            return View(fareGroup);
         }
 
-        // POST: Trains/Delete/5
+        // POST: FareGroups/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Train train = db.Trains.Find(id);
-            db.Trains.Remove(train);
+            FareGroup fareGroup = db.FareGroups.Find(id);
+            db.FareGroups.Remove(fareGroup);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

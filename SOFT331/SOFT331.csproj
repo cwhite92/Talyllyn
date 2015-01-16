@@ -159,6 +159,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FareGroupsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TrainsController.cs" />
     <Compile Include="Migrations\201501162123533_InitialMigration.cs" />
@@ -173,11 +174,16 @@
     <Compile Include="Migrations\201501162221012_UpdateTrainValidations.Designer.cs">
       <DependentUpon>201501162221012_UpdateTrainValidations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501162351456_AddFareGroupsTable.cs" />
+    <Compile Include="Migrations\201501162351456_AddFareGroupsTable.Designer.cs">
+      <DependentUpon>201501162351456_AddFareGroupsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\FareGroup.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Train.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -239,6 +245,11 @@
     <Content Include="Views\Trains\Details.cshtml" />
     <Content Include="Views\Trains\Edit.cshtml" />
     <Content Include="Views\Trains\Index.cshtml" />
+    <Content Include="Views\FareGroups\Create.cshtml" />
+    <Content Include="Views\FareGroups\Delete.cshtml" />
+    <Content Include="Views\FareGroups\Details.cshtml" />
+    <Content Include="Views\FareGroups\Edit.cshtml" />
+    <Content Include="Views\FareGroups\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -259,6 +270,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501162221012_UpdateTrainValidations.resx">
       <DependentUpon>201501162221012_UpdateTrainValidations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501162351456_AddFareGroupsTable.resx">
+      <DependentUpon>201501162351456_AddFareGroupsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
