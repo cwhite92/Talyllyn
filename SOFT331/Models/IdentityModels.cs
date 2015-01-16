@@ -28,5 +28,7 @@ namespace SOFT331.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<SOFT331.Models.Train> Trains { get; set; }
     }
 }
