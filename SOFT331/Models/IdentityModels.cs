@@ -36,5 +36,7 @@ namespace SOFT331.Models
         public System.Data.Entity.DbSet<SOFT331.Models.Fare> Fares { get; set; }
 
         public System.Data.Entity.DbSet<SOFT331.Models.Discount> Discounts { get; set; }
+
+        public System.Data.Entity.DbSet<SOFT331.Models.Station> Stations { get; set; }
     }
 }
