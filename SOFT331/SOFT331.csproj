@@ -159,6 +159,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DiscountsController.cs" />
     <Compile Include="Controllers\FareGroupsController.cs" />
     <Compile Include="Controllers\FaresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -183,11 +184,16 @@
     <Compile Include="Migrations\201501170006052_AddFaresTable.Designer.cs">
       <DependentUpon>201501170006052_AddFaresTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501172015071_CreateDiscountsTable.cs" />
+    <Compile Include="Migrations\201501172015071_CreateDiscountsTable.Designer.cs">
+      <DependentUpon>201501172015071_CreateDiscountsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Discount.cs" />
     <Compile Include="Models\Fare.cs" />
     <Compile Include="Models\FareGroup.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -261,6 +267,11 @@
     <Content Include="Views\Fares\Details.cshtml" />
     <Content Include="Views\Fares\Edit.cshtml" />
     <Content Include="Views\Fares\Index.cshtml" />
+    <Content Include="Views\Discounts\Create.cshtml" />
+    <Content Include="Views\Discounts\Delete.cshtml" />
+    <Content Include="Views\Discounts\Details.cshtml" />
+    <Content Include="Views\Discounts\Edit.cshtml" />
+    <Content Include="Views\Discounts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -287,6 +298,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501170006052_AddFaresTable.resx">
       <DependentUpon>201501170006052_AddFaresTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501172015071_CreateDiscountsTable.resx">
+      <DependentUpon>201501172015071_CreateDiscountsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
