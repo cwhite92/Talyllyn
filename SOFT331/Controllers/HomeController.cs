@@ -15,8 +15,6 @@ namespace SOFT331.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
