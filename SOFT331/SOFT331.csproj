@@ -199,6 +199,10 @@
     <Compile Include="Migrations\201501172234074_CreateTimetablesTable.Designer.cs">
       <DependentUpon>201501172234074_CreateTimetablesTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501181459110_CreateStationTimetablesTable.cs" />
+    <Compile Include="Migrations\201501181459110_CreateStationTimetablesTable.Designer.cs">
+      <DependentUpon>201501181459110_CreateStationTimetablesTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -210,6 +214,7 @@
     <Compile Include="Models\FareGroup.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Station.cs" />
+    <Compile Include="Models\StationTimetable.cs" />
     <Compile Include="Models\Timetable.cs" />
     <Compile Include="Models\Train.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -332,6 +337,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501172234074_CreateTimetablesTable.resx">
       <DependentUpon>201501172234074_CreateTimetablesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501181459110_CreateStationTimetablesTable.resx">
+      <DependentUpon>201501181459110_CreateStationTimetablesTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
