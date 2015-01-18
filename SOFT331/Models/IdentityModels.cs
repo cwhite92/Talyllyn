@@ -16,29 +16,4 @@ namespace SOFT331.Models
             return userIdentity;
         }
     }
-
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
-        {
-        }
-
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
-        }
-
-        public System.Data.Entity.DbSet<SOFT331.Models.Train> Trains { get; set; }
-
-        public System.Data.Entity.DbSet<SOFT331.Models.FareGroup> FareGroups { get; set; }
-
-        public System.Data.Entity.DbSet<SOFT331.Models.Fare> Fares { get; set; }
-
-        public System.Data.Entity.DbSet<SOFT331.Models.Discount> Discounts { get; set; }
-
-        public System.Data.Entity.DbSet<SOFT331.Models.Station> Stations { get; set; }
-
-        public System.Data.Entity.DbSet<SOFT331.Models.Timetable> Timetables { get; set; }
-    }
 }

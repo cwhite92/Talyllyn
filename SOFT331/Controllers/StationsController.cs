@@ -13,7 +13,7 @@ namespace SOFT331.Controllers
     [Authorize(Roles = "Admin")]
     public class StationsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private DatabaseContext db = new DatabaseContext();
 
         // GET: Stations
         [AllowAnonymous]

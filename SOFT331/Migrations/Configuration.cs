@@ -8,14 +8,14 @@ namespace SOFT331.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<SOFT331.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<SOFT331.Models.DatabaseContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(SOFT331.Models.ApplicationDbContext context)
+        protected override void Seed(SOFT331.Models.DatabaseContext context)
         {
             // Create Admin role
             if (!context.Roles.Any(r => r.Name == "Admin"))
