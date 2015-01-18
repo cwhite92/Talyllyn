@@ -11,10 +11,8 @@ using SOFT331.Models;
 namespace SOFT331.Controllers
 {
     [Authorize(Roles = "Admin")]
-    public class TimetablesController : Controller
+    public class TimetablesController : BaseController
     {
-        private DatabaseContext db = new DatabaseContext();
-
         // GET: Timetables
         [AllowAnonymous]
         public ActionResult Index()
@@ -116,15 +114,6 @@ namespace SOFT331.Controllers
             db.Timetables.Remove(timetable);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

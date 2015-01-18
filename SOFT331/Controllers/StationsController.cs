@@ -11,10 +11,8 @@ using SOFT331.Models;
 namespace SOFT331.Controllers
 {
     [Authorize(Roles = "Admin")]
-    public class StationsController : Controller
+    public class StationsController : BaseController
     {
-        private DatabaseContext db = new DatabaseContext();
-
         // GET: Stations
         [AllowAnonymous]
         public ActionResult Index()
@@ -116,15 +114,6 @@ namespace SOFT331.Controllers
             db.Stations.Remove(station);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }
