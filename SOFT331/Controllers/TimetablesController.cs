@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SOFT331.Models;
+using SOFT331.ViewModels;
 
 namespace SOFT331.Controllers
 {
@@ -39,7 +40,14 @@ namespace SOFT331.Controllers
         // GET: Timetables/Create
         public ActionResult Create()
         {
-            return View();
+            TimetablesCreateViewModel model = new TimetablesCreateViewModel
+            {
+                Timetable = new Timetable(),
+                TrainList = new SelectList(db.Trains, "Id", "Name"),
+                StationList = new SelectList(db.Stations, "Id", "Name")
+            };
+
+            return View(model);
         }
 
         // POST: Timetables/Create
@@ -47,16 +55,23 @@ namespace SOFT331.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Date")] Timetable timetable)
+        public ActionResult Create(TimetablesCreateViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                db.Timetables.Add(timetable);
+                db.Timetables.Add(viewModel.Timetable);
+
+                for (int i = 0; i < viewModel.StationTimetables.Count; i++)
+                {
+                    viewModel.StationTimetables[i].TimetableId = viewModel.Timetable.Id;
+                    db.StationTimetables.Add(viewModel.StationTimetables[i]);
+                }
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(timetable);
+            return View(viewModel);
         }
 
         // GET: Timetables/Edit/5

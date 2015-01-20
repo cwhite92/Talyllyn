@@ -29,5 +29,7 @@ namespace SOFT331.Models
             get { return _capacity; }
             set { _capacity = value; }
         }
+
+        public virtual ICollection<Timetable> Timetables { get; set; }
     }
 }

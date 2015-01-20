@@ -11,9 +11,13 @@ namespace SOFT331.Models
     {
         public int Id { get; set; }
 
+        public int TrainId { get; set; }
+
         [Required, Column(TypeName = "Date"), DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; }
 
         public virtual ICollection<StationTimetable> StationTimetables { get; set; }
+
+        public virtual Train Train { get; set; }
     }
 }

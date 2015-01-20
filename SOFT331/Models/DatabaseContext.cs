@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 
 namespace SOFT331.Models
 {
@@ -18,6 +19,21 @@ namespace SOFT331.Models
             return new DatabaseContext();
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Station>()
+                .HasMany(c => c.StationTimetables)
+                .WithRequired()
+                .HasForeignKey(c => c.StationId);
+
+            modelBuilder.Entity<Timetable>()
+                .HasMany(c => c.StationTimetables)
+                .WithRequired()
+                .HasForeignKey(c => c.TimetableId);
+
+            base.OnModelCreating(modelBuilder);
+        }
+
         public System.Data.Entity.DbSet<SOFT331.Models.Train> Trains { get; set; }
 
         public System.Data.Entity.DbSet<SOFT331.Models.FareGroup> FareGroups { get; set; }
@@ -29,5 +45,7 @@ namespace SOFT331.Models
         public System.Data.Entity.DbSet<SOFT331.Models.Station> Stations { get; set; }
 
         public System.Data.Entity.DbSet<SOFT331.Models.Timetable> Timetables { get; set; }
+
+        public System.Data.Entity.DbSet<SOFT331.Models.StationTimetable> StationTimetables { get; set; }
     }
 }

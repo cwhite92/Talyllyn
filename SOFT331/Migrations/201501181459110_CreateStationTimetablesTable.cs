@@ -11,12 +11,13 @@ namespace SOFT331.Migrations
                 "dbo.StationTimetables",
                 c => new
                     {
+                        Id = c.Int(nullable: false, identity: true),
                         StationId = c.Int(nullable: false),
                         TimetableId = c.Int(nullable: false),
                         Arrival = c.Time(nullable: false, precision: 7),
                         Departure = c.Time(nullable: false, precision: 7),
                     })
-                .PrimaryKey(t => new { t.StationId, t.TimetableId })
+                .PrimaryKey(t => new { t.TimetableId, t.StationId })
                 .ForeignKey("dbo.Stations", t => t.StationId, cascadeDelete: true)
                 .ForeignKey("dbo.Timetables", t => t.TimetableId, cascadeDelete: true)
                 .Index(t => t.StationId)
