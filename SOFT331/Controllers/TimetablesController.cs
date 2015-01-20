@@ -63,8 +63,12 @@ namespace SOFT331.Controllers
 
                 for (int i = 0; i < viewModel.StationTimetables.Count; i++)
                 {
-                    viewModel.StationTimetables[i].TimetableId = viewModel.Timetable.Id;
-                    db.StationTimetables.Add(viewModel.StationTimetables[i]);
+                    // Only add the entry if station ID isn't null, this is when a user doesn't fill out the entire form
+                    if (viewModel.StationTimetables[i].StationId != null)
+                    {
+                        viewModel.StationTimetables[i].TimetableId = viewModel.Timetable.Id;
+                        db.StationTimetables.Add(viewModel.StationTimetables[i]);
+                    }
                 }
 
                 db.SaveChanges();
@@ -72,44 +76,6 @@ namespace SOFT331.Controllers
             }
 
             return View(viewModel);
-        }
-
-        // GET: Timetables/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            TimetablesCreateViewModel model = new TimetablesCreateViewModel
-            {
-                Timetable = db.Timetables.Find(id),
-                TrainList = new SelectList(db.Trains, "Id", "Name"),
-                StationList = new SelectList(db.Stations, "Id", "Name")
-            };
-
-            if (model.Timetable == null)
-            {
-                return HttpNotFound();
-            }
-            return View(model);
-        }
-
-        // POST: Timetables/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(TimetablesCreateViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(model.Timetable).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(model);
         }
 
         // GET: Timetables/Delete/5

@@ -38,7 +38,7 @@
                 <th>Departure Time</th>
             </tr>
 
-            @for (var i = 0; i < 3; i++)
+            @for (var i = 0; i < Model.maximumStops; i++)
             {
                 <tr>
                     <td>@Html.DropDownListFor(model => model.StationTimetables[i].StationId, Model.StationList, "---", htmlAttributes: new { @class = "form-control col-md-2" })</td>

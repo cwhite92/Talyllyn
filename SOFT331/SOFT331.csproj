@@ -212,6 +212,10 @@
     <Compile Include="Migrations\201501201659332_CreateTimetableTrainsRelationship.Designer.cs">
       <DependentUpon>201501201659332_CreateTimetableTrainsRelationship.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501201907415_SetArrivalDepartureToOptional.cs" />
+    <Compile Include="Migrations\201501201907415_SetArrivalDepartureToOptional.Designer.cs">
+      <DependentUpon>201501201907415_SetArrivalDepartureToOptional.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -309,7 +313,6 @@
     <Content Include="Views\Timetables\Create.cshtml" />
     <Content Include="Views\Timetables\Delete.cshtml" />
     <Content Include="Views\Timetables\Details.cshtml" />
-    <Content Include="Views\Timetables\Edit.cshtml" />
     <Content Include="Views\Timetables\Index.cshtml" />
     <Content Include="Views\StationTimetables\Create.cshtml" />
     <Content Include="Views\StationTimetables\Delete.cshtml" />
@@ -361,6 +364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501201659332_CreateTimetableTrainsRelationship.resx">
       <DependentUpon>201501201659332_CreateTimetableTrainsRelationship.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501201907415_SetArrivalDepartureToOptional.resx">
+      <DependentUpon>201501201907415_SetArrivalDepartureToOptional.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
