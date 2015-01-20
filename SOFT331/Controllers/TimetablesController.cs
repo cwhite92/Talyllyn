@@ -81,12 +81,19 @@ namespace SOFT331.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Timetable timetable = db.Timetables.Find(id);
-            if (timetable == null)
+
+            TimetablesCreateViewModel model = new TimetablesCreateViewModel
+            {
+                Timetable = db.Timetables.Find(id),
+                TrainList = new SelectList(db.Trains, "Id", "Name"),
+                StationList = new SelectList(db.Stations, "Id", "Name")
+            };
+
+            if (model.Timetable == null)
             {
                 return HttpNotFound();
             }
-            return View(timetable);
+            return View(model);
         }
 
         // POST: Timetables/Edit/5
@@ -94,15 +101,15 @@ namespace SOFT331.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Date")] Timetable timetable)
+        public ActionResult Edit(TimetablesCreateViewModel model)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(timetable).State = EntityState.Modified;
+                db.Entry(model.Timetable).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(timetable);
+            return View(model);
         }
 
         // GET: Timetables/Delete/5
