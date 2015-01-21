@@ -11,6 +11,7 @@ namespace SOFT331.Models
     {
         public int Id { get; set; }
 
+        [Required, Display(Name = "Train")]
         public int TrainId { get; set; }
 
         [Required, Column(TypeName = "Date"), DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
