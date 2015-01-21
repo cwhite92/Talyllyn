@@ -216,6 +216,10 @@
     <Compile Include="Migrations\201501201907415_SetArrivalDepartureToOptional.Designer.cs">
       <DependentUpon>201501201907415_SetArrivalDepartureToOptional.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501212150007_CreateTicketsTable.cs" />
+    <Compile Include="Migrations\201501212150007_CreateTicketsTable.Designer.cs">
+      <DependentUpon>201501212150007_CreateTicketsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -228,6 +232,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Station.cs" />
     <Compile Include="Models\StationTimetable.cs" />
+    <Compile Include="Models\Ticket.cs" />
     <Compile Include="Models\Timetable.cs" />
     <Compile Include="Models\Train.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -367,6 +372,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501201907415_SetArrivalDepartureToOptional.resx">
       <DependentUpon>201501201907415_SetArrivalDepartureToOptional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501212150007_CreateTicketsTable.resx">
+      <DependentUpon>201501212150007_CreateTicketsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

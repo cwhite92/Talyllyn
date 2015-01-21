@@ -19,6 +19,8 @@ namespace SOFT331.Models
 
         public virtual ICollection<StationTimetable> StationTimetables { get; set; }
 
+        public virtual ICollection<Ticket> Tickets { get; set; }
+
         public virtual Train Train { get; set; }
     }
 }

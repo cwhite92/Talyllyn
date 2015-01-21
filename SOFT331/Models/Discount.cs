@@ -18,5 +18,7 @@ namespace SOFT331.Models
 
         [Required, Range(1, 100, ErrorMessage = "Discount must be between 1 and 100%."), Display(Name = "Discount Amount")]
         public int DiscountAmount { get; set; }
+
+        public virtual ICollection<Ticket> Tickets { get; set; }
     }
 }

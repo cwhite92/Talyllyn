@@ -24,5 +24,7 @@ namespace SOFT331.Models
         public decimal Price { get; set; }
 
         public virtual FareGroup FareGroup { get; set; }
+
+        public virtual ICollection<Ticket> Tickets { get; set; }
     }
 }
