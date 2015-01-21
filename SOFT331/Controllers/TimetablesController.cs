@@ -29,7 +29,9 @@ namespace SOFT331.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Timetable timetable = db.Timetables.Find(id);
+
             if (timetable == null)
             {
                 return HttpNotFound();

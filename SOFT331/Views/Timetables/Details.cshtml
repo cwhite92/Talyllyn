@@ -1,5 +1,4 @@
 ﻿@model SOFT331.Models.Timetable
-
 @{
     ViewBag.Title = "Details";
 }
@@ -17,10 +16,36 @@
         <dd>
             @Html.DisplayFor(model => model.Date)
         </dd>
-
     </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            Train
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Train.Name)
+        </dd>
+    </dl>
+
+    <h3>Stops</h3>
+    <table class="table">
+        <tr>
+            <th>Station</th>
+            <th>Arrival Time</th>
+            <th>Departure Time</th>
+        </tr>
+
+        @foreach (var stop in Model.StationTimetables)
+        {
+            <tr>
+                <td>@stop.Station.Name</td>
+                <td>@stop.Arrival</td>
+                <td>@stop.Departure</td>
+            </tr>
+        }
+    </table>
+    
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
