@@ -5,11 +5,14 @@ using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SOFT331.Models
 {
     public class Fare
     {
+        private int fareGroupId;
+
         public int Id { get; set; }
 
         public int FareGroupId { get; set; }

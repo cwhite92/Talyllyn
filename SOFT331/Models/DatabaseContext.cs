@@ -47,5 +47,7 @@ namespace SOFT331.Models
         public System.Data.Entity.DbSet<SOFT331.Models.Timetable> Timetables { get; set; }
 
         public System.Data.Entity.DbSet<SOFT331.Models.StationTimetable> StationTimetables { get; set; }
+
+        public System.Data.Entity.DbSet<SOFT331.Models.Ticket> Tickets { get; set; }
     }
 }

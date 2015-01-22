@@ -11,7 +11,7 @@ namespace SOFT331.Models
     public class Train
     {
         private const int DEFAULT_CAPACITY = 150;
-        private int _capacity = DEFAULT_CAPACITY;
+        private int capacity = DEFAULT_CAPACITY;
 
         public int Id { get; set; }
 
@@ -26,8 +26,8 @@ namespace SOFT331.Models
 
         [Required, DefaultValue(DEFAULT_CAPACITY), Display(Name = "Seating Capacity")]
         public int Capacity {
-            get { return _capacity; }
-            set { _capacity = value; }
+            get { return capacity; }
+            set { capacity = value; }
         }
 
         public virtual ICollection<Timetable> Timetables { get; set; }
