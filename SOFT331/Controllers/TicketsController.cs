@@ -10,8 +10,10 @@ using SOFT331.Models;
 
 namespace SOFT331.Controllers
 {
-    public class TicketsController : BaseController
+    public class TicketsController : Controller
     {
+        private DatabaseContext db = new DatabaseContext();
+
         // GET: Tickets
         public ActionResult Index()
         {
@@ -19,27 +21,12 @@ namespace SOFT331.Controllers
             return View(tickets.ToList());
         }
 
-        // GET: Tickets/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Ticket ticket = db.Tickets.Find(id);
-            if (ticket == null)
-            {
-                return HttpNotFound();
-            }
-            return View(ticket);
-        }
-
         // GET: Tickets/Create
         public ActionResult Create()
         {
             ViewBag.DiscountId = new SelectList(db.Discounts, "Id", "Name");
             ViewBag.FareId = new SelectList(db.Fares, "Id", "Name");
-            ViewBag.TimetableId = new SelectList(db.Timetables, "Id", "Id");
+            ViewBag.TimetableId = new SelectList(db.Timetables, "Id", "Date");
             return View();
         }
 
@@ -77,7 +64,7 @@ namespace SOFT331.Controllers
             }
             ViewBag.DiscountId = new SelectList(db.Discounts, "Id", "Name", ticket.DiscountId);
             ViewBag.FareId = new SelectList(db.Fares, "Id", "Name", ticket.FareId);
-            ViewBag.TimetableId = new SelectList(db.Timetables, "Id", "Id", ticket.TimetableId);
+            ViewBag.TimetableId = new SelectList(db.Timetables, "Id", "Date", ticket.TimetableId);
             return View(ticket);
         }
 
@@ -124,6 +111,15 @@ namespace SOFT331.Controllers
             db.Tickets.Remove(ticket);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

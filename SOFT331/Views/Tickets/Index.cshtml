@@ -29,16 +29,16 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Discount.Name)
+            @item.Discount.Name
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Fare.Name)
+            @item.Fare.ToString()
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Timetable.Id)
+            @item.Timetable.Date
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Wheelchair)
+            @item.Wheelchair
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
