@@ -1,4 +1,4 @@
-﻿@model SOFT331.Models.Ticket
+﻿@model SOFT331.ViewModels.TicketCreateViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -17,7 +17,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TimetableId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("TimetableId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.TimetableId, Model.TimetableList, "---", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.TimetableId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -25,7 +25,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.FareId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("FareId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.FareId, Model.FareList, "---", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.FareId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -33,7 +33,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DiscountId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("DiscountId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.DiscountId, Model.DiscountList, "---", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.DiscountId, "", new { @class = "text-danger" })
             </div>
         </div>

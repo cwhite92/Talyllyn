@@ -1,4 +1,5 @@
-﻿@model SOFT331.Models.Ticket
+﻿@model SOFT331.ViewModels.TicketDeleteViewModel
+
 
 @{
     ViewBag.Title = "Delete";
@@ -12,15 +13,15 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Discount.Name)
+            @Html.DisplayNameFor(model => model.TimetableId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Discount.Name)
+            @Html.DisplayFor(model => model.Timetable.Date)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Fare.Name)
+            @Html.DisplayNameFor(model => model.FareId)
         </dt>
 
         <dd>
@@ -28,11 +29,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Timetable.Id)
+            @Html.DisplayNameFor(model => model.DiscountId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Timetable.Id)
+            @Html.DisplayFor(model => model.Discount.Name)
         </dd>
 
         <dt>

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SOFT331.Models.Ticket>
+﻿@model IEnumerable<SOFT331.ViewModels.TicketIndexViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -12,13 +12,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Discount.Name)
+            @Html.DisplayNameFor(model => model.TimetableId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Fare.Name)
+            @Html.DisplayNameFor(model => model.FareId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Timetable.Id)
+            @Html.DisplayNameFor(model => model.DiscountId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Wheelchair)
@@ -29,20 +29,22 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @item.Discount.Name
+            @Html.DisplayFor(model => item.Timetable.Date)
         </td>
         <td>
             @item.Fare.ToString()
         </td>
         <td>
-            @item.Timetable.Date
+            @if(item.Discount != null)
+            {
+                @Html.DisplayFor(model => item.Discount.Name)
+            }
         </td>
         <td>
-            @item.Wheelchair
+            @Html.DisplayFor(model => item.WheelchairStatusString)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>

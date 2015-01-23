@@ -7,27 +7,40 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SOFT331.Models;
+using SOFT331.ViewModels;
 
 namespace SOFT331.Controllers
 {
-    public class TicketsController : Controller
+    public class TicketsController : BaseController
     {
-        private DatabaseContext db = new DatabaseContext();
-
         // GET: Tickets
         public ActionResult Index()
         {
-            var tickets = db.Tickets.Include(t => t.Discount).Include(t => t.Fare).Include(t => t.Timetable);
-            return View(tickets.ToList());
+            List<TicketIndexViewModel> tickets = new List<TicketIndexViewModel>(); 
+
+            foreach(Ticket ticket in db.Tickets.Include(t => t.Discount).Include(t => t.Fare).Include(t => t.Timetable))
+            {
+                tickets.Add(new TicketIndexViewModel {
+                    Id = ticket.Id,
+                    Fare = ticket.Fare,
+                    Discount = ticket.Discount,
+                    Timetable = ticket.Timetable,
+                    Wheelchair = ticket.Wheelchair
+                });
+            }
+
+            return View(tickets);
         }
 
         // GET: Tickets/Create
         public ActionResult Create()
         {
-            ViewBag.DiscountId = new SelectList(db.Discounts, "Id", "Name");
-            ViewBag.FareId = new SelectList(db.Fares, "Id", "Name");
-            ViewBag.TimetableId = new SelectList(db.Timetables, "Id", "Date");
-            return View();
+            TicketCreateViewModel viewModel = new TicketCreateViewModel();
+            viewModel.TimetableList = new SelectList(db.Timetables, "Id", "Date");
+            viewModel.FareList = new SelectList(db.Fares, "Id", "Name");
+            viewModel.DiscountList = new SelectList(db.Discounts, "Id", "Name");
+
+            return View(viewModel);
         }
 
         // POST: Tickets/Create
@@ -35,19 +48,26 @@ namespace SOFT331.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FareId,DiscountId,TimetableId,Wheelchair")] Ticket ticket)
+        public ActionResult Create(TicketCreateViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                db.Tickets.Add(ticket);
+                db.Tickets.Add(new Ticket
+                {
+                    TimetableId = viewModel.TimetableId,
+                    FareId = viewModel.FareId,
+                    DiscountId = viewModel.DiscountId,
+                    Wheelchair = viewModel.Wheelchair
+                });
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.DiscountId = new SelectList(db.Discounts, "Id", "Name", ticket.DiscountId);
-            ViewBag.FareId = new SelectList(db.Fares, "Id", "Name", ticket.FareId);
-            ViewBag.TimetableId = new SelectList(db.Timetables, "Id", "Id", ticket.TimetableId);
-            return View(ticket);
+            viewModel.TimetableList = new SelectList(db.Timetables, "Id", "Date");
+            viewModel.FareList = new SelectList(db.Fares, "Id", "Name");
+            viewModel.DiscountList = new SelectList(db.Discounts, "Id", "Name");
+
+            return View(viewModel);
         }
 
         // GET: Tickets/Edit/5
@@ -57,15 +77,25 @@ namespace SOFT331.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Ticket ticket = db.Tickets.Find(id);
+
             if (ticket == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.DiscountId = new SelectList(db.Discounts, "Id", "Name", ticket.DiscountId);
-            ViewBag.FareId = new SelectList(db.Fares, "Id", "Name", ticket.FareId);
-            ViewBag.TimetableId = new SelectList(db.Timetables, "Id", "Date", ticket.TimetableId);
-            return View(ticket);
+
+            TicketEditViewModel viewModel = new TicketEditViewModel();
+            viewModel.TimetableId = ticket.TimetableId;
+            viewModel.FareId = ticket.FareId;
+            viewModel.DiscountId = ticket.DiscountId;
+            viewModel.Wheelchair = ticket.Wheelchair;
+
+            viewModel.TimetableList = new SelectList(db.Timetables, "Id", "Date", viewModel.TimetableId);
+            viewModel.FareList = new SelectList(db.Fares, "Id", "Name", viewModel.FareId);
+            viewModel.DiscountList = new SelectList(db.Discounts, "Id", "Name", viewModel.DiscountId);
+
+            return View(viewModel);
         }
 
         // POST: Tickets/Edit/5
@@ -73,18 +103,26 @@ namespace SOFT331.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FareId,DiscountId,TimetableId,Wheelchair")] Ticket ticket)
+        public ActionResult Edit(TicketEditViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
+                Ticket ticket = db.Tickets.Find(viewModel.Id);
+
+                ticket.TimetableId = viewModel.TimetableId;
+                ticket.FareId = viewModel.FareId;
+                ticket.DiscountId = viewModel.DiscountId;
+                ticket.Wheelchair = viewModel.Wheelchair;
                 db.Entry(ticket).State = EntityState.Modified;
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.DiscountId = new SelectList(db.Discounts, "Id", "Name", ticket.DiscountId);
-            ViewBag.FareId = new SelectList(db.Fares, "Id", "Name", ticket.FareId);
-            ViewBag.TimetableId = new SelectList(db.Timetables, "Id", "Id", ticket.TimetableId);
-            return View(ticket);
+
+            viewModel.TimetableList = new SelectList(db.Timetables, "Id", "Date", viewModel.TimetableId);
+            viewModel.FareList = new SelectList(db.Fares, "Id", "Name", viewModel.FareId);
+            viewModel.DiscountList = new SelectList(db.Discounts, "Id", "Name", viewModel.DiscountId);
+            return View(viewModel);
         }
 
         // GET: Tickets/Delete/5
@@ -94,12 +132,21 @@ namespace SOFT331.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Ticket ticket = db.Tickets.Find(id);
+
             if (ticket == null)
             {
                 return HttpNotFound();
             }
-            return View(ticket);
+
+            TicketDeleteViewModel viewModel = new TicketDeleteViewModel();
+            viewModel.Timetable = ticket.Timetable;
+            viewModel.Fare = ticket.Fare;
+            viewModel.Discount = ticket.Discount;
+            viewModel.Wheelchair = ticket.Wheelchair;
+
+            return View(viewModel);
         }
 
         // POST: Tickets/Delete/5
@@ -111,15 +158,6 @@ namespace SOFT331.Controllers
             db.Tickets.Remove(ticket);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }
