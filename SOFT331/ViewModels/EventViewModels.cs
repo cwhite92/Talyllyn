@@ -16,12 +16,12 @@ namespace SOFT331.ViewModels
 
     public class EventCreateViewModel : BaseEventViewModel
     {
-        public int Id { get; set; }
+        
     }
 
     public class EventIndexViewModel : BaseEventViewModel
     {
-
+        public int Id { get; set; }
     }
 
     public class EventDetailsViewModel : BaseEventViewModel
@@ -29,9 +29,9 @@ namespace SOFT331.ViewModels
 
     }
 
-    public class EventEditViewModel : EventCreateViewModel
+    public class EventEditViewModel : BaseEventViewModel
     {
-
+        public int Id { get; set; }
     }
 
     public class EventDeleteViewModel : BaseEventViewModel

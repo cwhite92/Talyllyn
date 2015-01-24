@@ -18,7 +18,19 @@ namespace SOFT331.Controllers
         // GET: Events
         public ActionResult Index()
         {
-            return View(db.Events.ToList());
+            List<EventIndexViewModel> events = new List<EventIndexViewModel>();
+
+            foreach (Event @event in db.Events)
+            {
+                events.Add(new EventIndexViewModel
+                {
+                    Id = @event.Id,
+                    Name = @event.Name,
+                    Description = @event.Description
+                });
+            }
+
+            return View(events);
         }
 
         [AllowAnonymous]
