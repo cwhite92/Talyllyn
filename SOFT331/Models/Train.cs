@@ -15,6 +15,8 @@ namespace SOFT331.Models
 
         public int Id { get; set; }
 
+        public int? EventId { get; set; }
+
         [Required, MaxLength(50), MinLength(5)]
         public string Name { get; set; }
 
@@ -30,6 +32,7 @@ namespace SOFT331.Models
             set { capacity = value; }
         }
 
+        public virtual Event Event { get; set; }
         public virtual ICollection<Timetable> Timetables { get; set; }
     }
 }
