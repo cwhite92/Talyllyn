@@ -11,6 +11,7 @@ using SOFT331.ViewModels;
 
 namespace SOFT331.Controllers
 {
+    [Authorize(Roles = "Admin, Clerk")]
     public class TicketsController : BaseController
     {
         // GET: Tickets
