@@ -25,7 +25,7 @@ namespace SOFT331.ViewModels
         public int TimetableId { get; set; }
         public Timetable Timetable { get; set; }
 
-        [Display(Name = "Wheelchair Space Required")]
+        [OneWheelchairPerTrain, Display(Name = "Wheelchair Space Required")]
         public bool Wheelchair { get; set; }
         public string WheelchairStatusString
         {
