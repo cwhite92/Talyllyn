@@ -20,5 +20,10 @@ namespace SOFT331.Models
         public int DiscountAmount { get; set; }
 
         public virtual ICollection<Ticket> Tickets { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("{0} (-{1}%)", this.Name, this.DiscountAmount);
+        }
     }
 }

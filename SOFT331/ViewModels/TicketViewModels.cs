@@ -10,20 +10,17 @@ namespace SOFT331.ViewModels
 {
     public class BaseTicketViewModel
     {
-        // TODO: move this out into edit and index?
-        public int Id { get; set; }
+        [Required, Display(Name = "Date of Travel")]
+        public int TimetableId { get; set; }
+        public Timetable Timetable { get; set; }
 
-        [Display(Name = "Fare")]
+        [Required, Display(Name = "Fare")]
         public int FareId { get; set; }
         public Fare Fare { get; set; }
 
         [Display(Name = "Discount")]
         public int? DiscountId { get; set; }
         public Discount Discount { get; set; }
-
-        [Display(Name = "Date of Travel")]
-        public int TimetableId { get; set; }
-        public Timetable Timetable { get; set; }
 
         [OneWheelchairPerTrain, Display(Name = "Wheelchair Space Required")]
         public bool Wheelchair { get; set; }
@@ -39,20 +36,18 @@ namespace SOFT331.ViewModels
     public class TicketCreateViewModel : BaseTicketViewModel
     {
         public SelectList TimetableList { get; set; }
-
-        public SelectList FareList { get; set; }
-
-        public SelectList DiscountList { get; set; }
+        public List<FareGroup> FareList { get; set; }
+        public List<Discount> DiscountList { get; set; }
     }
 
     public class TicketEditViewModel : TicketCreateViewModel
     {
-
+        public int Id { get; set; }
     }
 
     public class TicketIndexViewModel : BaseTicketViewModel
     {
-
+        public int Id { get; set; }
     }
 
     public class TicketDeleteViewModel : BaseTicketViewModel

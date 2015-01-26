@@ -38,8 +38,8 @@ namespace SOFT331.Controllers
         {
             TicketCreateViewModel viewModel = new TicketCreateViewModel();
             viewModel.TimetableList = new SelectList(db.Timetables, "Id", "Date");
-            viewModel.FareList = new SelectList(db.Fares, "Id", "Name");
-            viewModel.DiscountList = new SelectList(db.Discounts, "Id", "Name");
+            viewModel.FareList = db.FareGroups.ToList();
+            viewModel.DiscountList = db.Discounts.ToList();
 
             return View(viewModel);
         }
@@ -65,8 +65,8 @@ namespace SOFT331.Controllers
             }
 
             viewModel.TimetableList = new SelectList(db.Timetables, "Id", "Date");
-            viewModel.FareList = new SelectList(db.Fares, "Id", "Name");
-            viewModel.DiscountList = new SelectList(db.Discounts, "Id", "Name");
+            viewModel.FareList = db.FareGroups.ToList();
+            viewModel.DiscountList = db.Discounts.ToList();
 
             return View(viewModel);
         }
@@ -93,8 +93,8 @@ namespace SOFT331.Controllers
             viewModel.Wheelchair = ticket.Wheelchair;
 
             viewModel.TimetableList = new SelectList(db.Timetables, "Id", "Date", viewModel.TimetableId);
-            viewModel.FareList = new SelectList(db.Fares, "Id", "Name", viewModel.FareId);
-            viewModel.DiscountList = new SelectList(db.Discounts, "Id", "Name", viewModel.DiscountId);
+            viewModel.FareList = db.FareGroups.ToList();
+            viewModel.DiscountList = db.Discounts.ToList();
 
             return View(viewModel);
         }
@@ -121,8 +121,8 @@ namespace SOFT331.Controllers
             }
 
             viewModel.TimetableList = new SelectList(db.Timetables, "Id", "Date", viewModel.TimetableId);
-            viewModel.FareList = new SelectList(db.Fares, "Id", "Name", viewModel.FareId);
-            viewModel.DiscountList = new SelectList(db.Discounts, "Id", "Name", viewModel.DiscountId);
+            viewModel.FareList = db.FareGroups.ToList();
+            viewModel.DiscountList = db.Discounts.ToList();
             return View(viewModel);
         }
 

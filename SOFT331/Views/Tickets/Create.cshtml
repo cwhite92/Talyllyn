@@ -1,4 +1,5 @@
-﻿@model SOFT331.ViewModels.TicketCreateViewModel
+﻿@using SOFT331.Models;
+@model SOFT331.ViewModels.TicketCreateViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -21,11 +22,22 @@
                 @Html.ValidationMessageFor(model => model.TimetableId, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.FareId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.FareId, Model.FareList, "---", htmlAttributes: new { @class = "form-control" })
+                @foreach (FareGroup fareGroup in Model.FareList)
+                {
+                    <h5><strong>@fareGroup.Name</strong></h5>
+
+                    foreach (Fare fare in fareGroup.Fares)
+                    {
+                        <label class="checkbox-inline">
+                            @Html.RadioButtonFor(model => model.FareId, fare.Id)
+                            @fare.Name
+                        </label>
+                    }
+                }
                 @Html.ValidationMessageFor(model => model.FareId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -33,7 +45,13 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DiscountId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.DiscountId, Model.DiscountList, "---", htmlAttributes: new { @class = "form-control" })
+                @foreach (Discount discount in Model.DiscountList)
+                {
+                    <label class="checkbox-inline">
+                        @Html.RadioButtonFor(model => model.DiscountId, discount.Id)
+                        @discount
+                    </label>
+                }
                 @Html.ValidationMessageFor(model => model.DiscountId, "", new { @class = "text-danger" })
             </div>
         </div>
