@@ -22,7 +22,7 @@ namespace SOFT331.Models
         public bool Wheelchair { get; set; }
         public string WheelchairStatusString
         {
-            get { return string.Format("{0}", this.Wheelchair ? "Yes" : "No") }
+            get { return string.Format("{0}", this.Wheelchair ? "Yes" : "No"); }
         }
 
         public virtual Fare Fare { get; set; }
