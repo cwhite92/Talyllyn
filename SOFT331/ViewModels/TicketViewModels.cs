@@ -10,6 +10,9 @@ namespace SOFT331.ViewModels
 {
     public class BaseTicketViewModel
     {
+        // TODO: move this out into edit and index?
+        public int Id { get; set; }
+
         [Display(Name = "Fare")]
         public int FareId { get; set; }
         public Fare Fare { get; set; }
@@ -36,18 +39,20 @@ namespace SOFT331.ViewModels
     public class TicketCreateViewModel : BaseTicketViewModel
     {
         public SelectList TimetableList { get; set; }
+
         public SelectList FareList { get; set; }
+
         public SelectList DiscountList { get; set; }
     }
 
     public class TicketIndexViewModel : BaseTicketViewModel
     {
-        public int Id { get; set; }
+
     }
 
     public class TicketEditViewModel : TicketCreateViewModel
     {
-        public int Id { get; set; }
+
     }
 
     public class TicketDeleteViewModel : BaseTicketViewModel

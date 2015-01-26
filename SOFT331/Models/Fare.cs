@@ -11,6 +11,8 @@ namespace SOFT331.Models
 {
     public class Fare
     {
+        private int fareGroupId;
+
         public int Id { get; set; }
 
         public int FareGroupId { get; set; }

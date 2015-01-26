@@ -10,7 +10,7 @@ namespace SOFT331.Models
     {
         public int Id { get; set; }
 
-        [Required, MaxLength(50), MinLength(3)]
+        [Required, MaxLength(50), MinLength(5)]
         public string Name { get; set; }
 
         public virtual ICollection<StationTimetable> StationTimetables { get; set; }
