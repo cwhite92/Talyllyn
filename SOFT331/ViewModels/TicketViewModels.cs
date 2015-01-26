@@ -45,12 +45,12 @@ namespace SOFT331.ViewModels
         public SelectList DiscountList { get; set; }
     }
 
-    public class TicketIndexViewModel : BaseTicketViewModel
+    public class TicketEditViewModel : TicketCreateViewModel
     {
 
     }
 
-    public class TicketEditViewModel : TicketCreateViewModel
+    public class TicketIndexViewModel : BaseTicketViewModel
     {
 
     }
