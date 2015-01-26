@@ -5,6 +5,7 @@ using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SOFT331.Models
 {
@@ -23,8 +24,8 @@ namespace SOFT331.Models
         [Required, DataType(DataType.MultilineText), MaxLength(2000)]
         public string Description { get; set; }
 
-        [Required, RegularExpression(@"^[0-9]{4}$", ErrorMessage = "Year must be in format XXXX."), Display(Name = "Production Year")]
-        public int Year { get; set; }
+        [Required, Display(Name = "Production Year"), Column(TypeName = "Date"), DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime Year { get; set; }
 
         [Required, DefaultValue(DEFAULT_CAPACITY), Display(Name = "Seating Capacity")]
         public int Capacity {

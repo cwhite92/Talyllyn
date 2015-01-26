@@ -225,6 +225,14 @@
     <Compile Include="Migrations\201501242203599_CreateEventsTable.Designer.cs">
       <DependentUpon>201501242203599_CreateEventsTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501262220303_RemoveYearColumnFromTrainsTable.cs" />
+    <Compile Include="Migrations\201501262220303_RemoveYearColumnFromTrainsTable.Designer.cs">
+      <DependentUpon>201501262220303_RemoveYearColumnFromTrainsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501262221345_AddDateTimeYearToTrainsTable.cs" />
+    <Compile Include="Migrations\201501262221345_AddDateTimeYearToTrainsTable.Designer.cs">
+      <DependentUpon>201501262221345_AddDateTimeYearToTrainsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -389,6 +397,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501242203599_CreateEventsTable.resx">
       <DependentUpon>201501242203599_CreateEventsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501262220303_RemoveYearColumnFromTrainsTable.resx">
+      <DependentUpon>201501262220303_RemoveYearColumnFromTrainsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501262221345_AddDateTimeYearToTrainsTable.resx">
+      <DependentUpon>201501262221345_AddDateTimeYearToTrainsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
