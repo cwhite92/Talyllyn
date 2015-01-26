@@ -33,6 +33,9 @@ namespace SOFT331.Models
             set { capacity = value; }
         }
 
+        [Required, Range(1, int.MaxValue)]
+        public int AdvancedTickets { get; set; }
+
         public virtual Event Event { get; set; }
         public virtual ICollection<Timetable> Timetables { get; set; }
     }

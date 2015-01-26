@@ -233,6 +233,10 @@
     <Compile Include="Migrations\201501262221345_AddDateTimeYearToTrainsTable.Designer.cs">
       <DependentUpon>201501262221345_AddDateTimeYearToTrainsTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501262227082_AddAdvancedTicketsFieldToTrainsTable.cs" />
+    <Compile Include="Migrations\201501262227082_AddAdvancedTicketsFieldToTrainsTable.Designer.cs">
+      <DependentUpon>201501262227082_AddAdvancedTicketsFieldToTrainsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -403,6 +407,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501262221345_AddDateTimeYearToTrainsTable.resx">
       <DependentUpon>201501262221345_AddDateTimeYearToTrainsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501262227082_AddAdvancedTicketsFieldToTrainsTable.resx">
+      <DependentUpon>201501262227082_AddAdvancedTicketsFieldToTrainsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
