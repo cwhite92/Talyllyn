@@ -20,11 +20,13 @@ namespace SOFT331.Models
 
         [Required, OneWheelchairPerTrain]
         public bool Wheelchair { get; set; }
+        public string WheelchairStatusString
+        {
+            get { return string.Format("{0}", this.Wheelchair ? "Yes" : "No") }
+        }
 
         public virtual Fare Fare { get; set; }
-
         public virtual Discount Discount { get; set; }
-
         public virtual Timetable Timetable { get; set; }
     }
 
@@ -39,8 +41,6 @@ namespace SOFT331.Models
 
             using (DatabaseContext db = new DatabaseContext())
             {
-                Train train = db.Timetables.Find(timetableId).Train;
-
                 foreach (Ticket ticket in db.Tickets.Where(t => t.TimetableId == timetableId))
                 {
                     // If there's another ticket that has wheelchair access then the validation fails

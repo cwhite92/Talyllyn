@@ -21,6 +21,8 @@ namespace SOFT331.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            // Set up many-to-many relationship between Stations and Timetables
+            // Entity framework doesn't handle this well, for some reason.
             modelBuilder.Entity<Station>()
                 .HasMany(c => c.StationTimetables)
                 .WithRequired()
