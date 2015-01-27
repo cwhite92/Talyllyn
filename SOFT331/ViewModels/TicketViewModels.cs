@@ -36,7 +36,7 @@ namespace SOFT331.ViewModels
     public class TicketCreateViewModel : BaseTicketViewModel
     {
         public SelectList TimetableList { get; set; }
-        public List<FareGroup> FareList { get; set; }
+        public SelectList FareList { get; set; }
         public List<Discount> DiscountList { get; set; }
     }
 
@@ -48,6 +48,18 @@ namespace SOFT331.ViewModels
     public class TicketIndexViewModel : BaseTicketViewModel
     {
         public int Id { get; set; }
+
+        // Holds a reference to this ticket, needed to use the getTotalPrice method
+        public Ticket Ticket { get; set; }
+
+        [Display(Name = "Total Price")]
+        public string TotalPrice
+        {
+            get
+            {
+                return string.Format("£{0}", this.Ticket.TotalPrice);
+            }
+        }
     }
 
     public class TicketDeleteViewModel : BaseTicketViewModel

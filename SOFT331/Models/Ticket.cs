@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -20,14 +21,26 @@ namespace SOFT331.Models
 
         [Required, OneWheelchairPerTrain]
         public bool Wheelchair { get; set; }
-        public string WheelchairStatusString
-        {
-            get { return string.Format("{0}", this.Wheelchair ? "Yes" : "No"); }
-        }
 
+        public decimal TotalPrice { get { return this.getTotalPrice(); } }
+
+        public virtual Timetable Timetable { get; set; }
         public virtual Fare Fare { get; set; }
         public virtual Discount Discount { get; set; }
-        public virtual Timetable Timetable { get; set; }
+
+        private decimal getTotalPrice()
+        {
+            decimal price = this.Fare.Price;
+
+            if (this.Discount != null)
+            {
+                // If there is a discount applied to this ticket work out the new price
+                decimal discountModifier = Decimal.Divide(this.Discount.DiscountAmount, 100);
+                price = price - Decimal.Multiply(price, discountModifier);
+            }
+
+            return Math.Round(price, 2);
+        }
     }
 
     public class OneWheelchairPerTrainAttribute : ValidationAttribute

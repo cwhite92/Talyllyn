@@ -26,7 +26,8 @@ namespace SOFT331.Controllers
                     Fare = ticket.Fare,
                     Discount = ticket.Discount,
                     Timetable = ticket.Timetable,
-                    Wheelchair = ticket.Wheelchair
+                    Wheelchair = ticket.Wheelchair,
+                    Ticket = ticket
                 });
             }
 
@@ -38,7 +39,7 @@ namespace SOFT331.Controllers
         {
             TicketCreateViewModel viewModel = new TicketCreateViewModel();
             viewModel.TimetableList = new SelectList(db.Timetables, "Id", "Date");
-            viewModel.FareList = db.FareGroups.ToList();
+            viewModel.FareList = new SelectList(db.Fares, "Id", "PrettyName");
             viewModel.DiscountList = db.Discounts.ToList();
 
             return View(viewModel);
@@ -57,7 +58,9 @@ namespace SOFT331.Controllers
                 {
                     TimetableId = viewModel.TimetableId,
                     FareId = viewModel.FareId,
-                    DiscountId = viewModel.DiscountId,
+
+                    // Discount is optional - if we get a -1 that actually means no discount
+                    DiscountId = viewModel.DiscountId == -1 ? null : viewModel.DiscountId,
                     Wheelchair = viewModel.Wheelchair
                 });
                 db.SaveChanges();
@@ -65,7 +68,7 @@ namespace SOFT331.Controllers
             }
 
             viewModel.TimetableList = new SelectList(db.Timetables, "Id", "Date");
-            viewModel.FareList = db.FareGroups.ToList();
+            viewModel.FareList = new SelectList(db.Fares, "Id", "PrettyName");
             viewModel.DiscountList = db.Discounts.ToList();
 
             return View(viewModel);
@@ -93,7 +96,7 @@ namespace SOFT331.Controllers
             viewModel.Wheelchair = ticket.Wheelchair;
 
             viewModel.TimetableList = new SelectList(db.Timetables, "Id", "Date", viewModel.TimetableId);
-            viewModel.FareList = db.FareGroups.ToList();
+            viewModel.FareList = new SelectList(db.Fares, "Id", "PrettyName");
             viewModel.DiscountList = db.Discounts.ToList();
 
             return View(viewModel);
@@ -112,7 +115,9 @@ namespace SOFT331.Controllers
 
                 ticket.TimetableId = viewModel.TimetableId;
                 ticket.FareId = viewModel.FareId;
-                ticket.DiscountId = viewModel.DiscountId;
+
+                // Discount is optional - if we get a -1 that actually means no discount
+                ticket.DiscountId = viewModel.DiscountId == -1 ? null : viewModel.DiscountId;
                 ticket.Wheelchair = viewModel.Wheelchair;
                 db.Entry(ticket).State = EntityState.Modified;
 
@@ -121,7 +126,7 @@ namespace SOFT331.Controllers
             }
 
             viewModel.TimetableList = new SelectList(db.Timetables, "Id", "Date", viewModel.TimetableId);
-            viewModel.FareList = db.FareGroups.ToList();
+            viewModel.FareList = new SelectList(db.Fares, "Id", "PrettyName");
             viewModel.DiscountList = db.Discounts.ToList();
             return View(viewModel);
         }

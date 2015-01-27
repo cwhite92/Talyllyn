@@ -28,9 +28,6 @@ namespace SOFT331.Models
 
         public virtual ICollection<Ticket> Tickets { get; set; }
 
-        public override string ToString()
-        {
-            return string.Format("{0} ({1})", this.FareGroup.Name, this.Name);
-        }
+        public string PrettyName { get { return string.Format("{0} ({1})", this.FareGroup.Name, this.Name); } }
     }
 }
