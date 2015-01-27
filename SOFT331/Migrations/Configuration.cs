@@ -113,6 +113,15 @@ namespace SOFT331.Migrations
             };
             fares.ForEach(f => context.Fares.Add(f));
             context.SaveChanges();
+
+            // Create discounts
+            List<Discount> discounts = new List<Discount>
+            {
+                new Discount { Name = "Carer", Description = "Carers of disabled persons.", DiscountAmount = 20 },
+                new Discount { Name = "Disabled child", Description = "Disabled children travel for free.", DiscountAmount = 100 }
+            };
+            discounts.ForEach(d => context.Discounts.Add(d));
+            context.SaveChanges();
         }
     }
 }
