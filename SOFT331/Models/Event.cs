@@ -13,7 +13,7 @@ namespace SOFT331.Models
         [Required, MaxLength(50), MinLength(3)]
         public string Name { get; set; }
 
-        [Required, MaxLength(2000)]
+        [Required, MaxLength(2000), DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
         public virtual ICollection<Train> Trains { get; set; }
