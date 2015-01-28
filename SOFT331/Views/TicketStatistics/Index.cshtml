@@ -70,13 +70,13 @@
 
         <dl class="dl-horizontal">
             <dt>
-                Total tickets sold
+                Total tickets
             </dt>
             <dd>
                 @Model.Tickets.Count()
             </dd>
             <dt>
-                Total sales
+                Total ticket value
             </dt>
             <dd>
                 @Model.TotalSales
@@ -84,17 +84,25 @@
         </dl>
 
         <h4>Ticket breakdown</h4>
-        <dl class="dl-horizontal">
-            @foreach(KeyValuePair<string, int> item in Model.TicketBreakdown.OrderByDescending(f => f.Value))
-            {
-                <dt>
-                    @item.Key
-                </dt>
-                <dd>
-                    @item.Value
-                </dd>
-            }
-        </dl>
+        @if (Model.TicketBreakdown.Count() > 0)
+        {
+            <dl class="dl-horizontal">
+                @foreach (KeyValuePair<string, int> item in Model.TicketBreakdown.OrderByDescending(f => f.Value))
+                {
+                    <dt>
+                        @item.Key
+                    </dt>
+                    <dd>
+                        @item.Value
+                    </dd>
+                }
+            </dl>
+        }
+        else
+        {
+            <p>No tickets returned for the provided parameters.</p>
+        }
+        
 </div>
 </div>
 
