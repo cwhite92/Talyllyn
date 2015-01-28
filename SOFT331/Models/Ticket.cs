@@ -21,8 +21,23 @@ namespace SOFT331.Models
 
         [Required, OneWheelchairPerTrain]
         public bool Wheelchair { get; set; }
+        public string WheelchairStatusString
+        {
+            get
+            {
+                return string.Format("{0}", this.Wheelchair ? "Yes" : "No");
+            }
+        }
 
         public decimal TotalPrice { get { return this.getTotalPrice(); } }
+        [Display(Name = "Total Price")]
+        public string TotalPriceString
+        {
+            get
+            {
+                return string.Format("£{0}", this.getTotalPrice());
+            }
+        }
 
         public virtual Timetable Timetable { get; set; }
         public virtual Fare Fare { get; set; }

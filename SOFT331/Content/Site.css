@@ -15,3 +15,11 @@ select,
 textarea {
     max-width: 280px;
 }
+
+#ticket-statistics dt {
+    width: 260px;
+}
+
+#ticket-statistics dd {
+    margin-left: 275px;
+}

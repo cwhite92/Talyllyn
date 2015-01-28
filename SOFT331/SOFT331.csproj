@@ -168,6 +168,7 @@
     <Compile Include="Controllers\StationsController.cs" />
     <Compile Include="Controllers\StationTimetablesController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
+    <Compile Include="Controllers\TicketStatisticsController.cs" />
     <Compile Include="Controllers\TimetablesController.cs" />
     <Compile Include="Controllers\TrainsController.cs" />
     <Compile Include="Migrations\201501162123533_InitialMigration.cs" />
@@ -256,6 +257,7 @@
     <Compile Include="Models\Train.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\TicketStatisticsViewModels.cs" />
     <Compile Include="ViewModels\TicketViewModels.cs" />
     <Compile Include="ViewModels\TimetablesCreateViewModel.cs" />
   </ItemGroup>
@@ -354,6 +356,7 @@
     <Content Include="Views\Events\Details.cshtml" />
     <Content Include="Views\Events\Edit.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
+    <Content Include="Views\TicketStatistics\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

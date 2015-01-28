@@ -24,13 +24,6 @@ namespace SOFT331.ViewModels
 
         [OneWheelchairPerTrain, Display(Name = "Wheelchair Space Required")]
         public bool Wheelchair { get; set; }
-        public string WheelchairStatusString
-        {
-            get
-            {
-                return string.Format("{0}", this.Wheelchair ? "Yes" : "No");
-            }
-        }
     }
 
     public class TicketCreateViewModel : BaseTicketViewModel
@@ -51,15 +44,6 @@ namespace SOFT331.ViewModels
 
         // Holds a reference to this ticket, needed to use the getTotalPrice method
         public Ticket Ticket { get; set; }
-
-        [Display(Name = "Total Price")]
-        public string TotalPrice
-        {
-            get
-            {
-                return string.Format("£{0}", this.Ticket.TotalPrice);
-            }
-        }
     }
 
     public class TicketDeleteViewModel : BaseTicketViewModel
