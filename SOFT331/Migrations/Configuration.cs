@@ -70,7 +70,7 @@ namespace SOFT331.Migrations
                 new Train { Name = "Douglas", Description = "This 0-4-0WT was built in 1918 by Andrew Barclay & Co. Ltd. for the Airservice Construction Corps. From 1921 until 1945 it worked at the RAF railway at Calshot Spit, Southampton. After a period in store at Calshot it was bought in 1949 by Abelson & Co. (Engineers) Ltd. who presented it to the Talyllyn in 1953. After overhaul and alteration from 2ft to 2ft 3in gauge, it entered service in 1954 and was named \"Douglas\" at the donor's request. Although smaller than the other locos it has performed well and was returned to service in 1995, having been fitted with a new boiler, turned out in its old Air Ministry Works & Buildings livery. It is now painted red and running in the guise of Duncan.", Year = new DateTime(1918, 1, 1), Capacity = 150, AdvancedTickets = 150 },
                 new Train { Name = "Tom Rolt", Description = "\"Tom Rolt\" was built at the Talyllyn's Pendre Works, incorporating components of a little-used 3ft gauge Andrew Barclay 0-4-0WT built in 1949 for Bord na Mona (the Irish turf board). An 0-4-2T, it is the line's newest, largest and most powerful steam locomotive, having entered service in 1991. It is named after the author L.T.C. Rolt who inspired the Talyllyn's preservation and was its General Manager in 1951-52.", Year = new DateTime(1991, 1, 1), Capacity = 150, AdvancedTickets = 150 }
             };
-            trains.ForEach(t => context.Trains.Add(t));
+            trains.ForEach(t => context.Trains.AddOrUpdate(t));
             context.SaveChanges();
 
             // Create stations
@@ -84,7 +84,7 @@ namespace SOFT331.Migrations
                 new Station { Name = "Abergynolwyn" },
                 new Station { Name = "Nant Gwernol" }
             };
-            stations.ForEach(s => context.Stations.Add(s));
+            stations.ForEach(s => context.Stations.AddOrUpdate(s));
             context.SaveChanges();
 
             // Create fare groups
@@ -94,7 +94,7 @@ namespace SOFT331.Migrations
                 new FareGroup { Name = "Tywyn to Dolgoch Return" },
                 new FareGroup { Name = "Other" }
             };
-            fareGroups.ForEach(f => context.FareGroups.Add(f));
+            fareGroups.ForEach(f => context.FareGroups.AddOrUpdate(f));
             context.SaveChanges();
 
             // Create fares
@@ -111,7 +111,7 @@ namespace SOFT331.Migrations
                 new Fare { Name = "Dog Rover", Description = "For dogs.", Price = (decimal)3.00, FareGroupId = 3 },
                 new Fare { Name = "Under 5s", Description = "Children under 5 years old.", Price = (decimal)0.00, FareGroupId = 3 },
             };
-            fares.ForEach(f => context.Fares.Add(f));
+            fares.ForEach(f => context.Fares.AddOrUpdate(f));
             context.SaveChanges();
 
             // Create discounts
@@ -120,7 +120,7 @@ namespace SOFT331.Migrations
                 new Discount { Name = "Carer", Description = "Carers of disabled persons.", DiscountAmount = 20 },
                 new Discount { Name = "Disabled child", Description = "Disabled children travel for free.", DiscountAmount = 100 }
             };
-            discounts.ForEach(d => context.Discounts.Add(d));
+            discounts.ForEach(d => context.Discounts.AddOrUpdate(d));
             context.SaveChanges();
         }
     }

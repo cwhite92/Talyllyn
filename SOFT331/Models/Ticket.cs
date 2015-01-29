@@ -21,28 +21,34 @@ namespace SOFT331.Models
 
         [Required, OneWheelchairPerTrain]
         public bool Wheelchair { get; set; }
-        public string WheelchairStatusString
-        {
-            get
-            {
-                return string.Format("{0}", this.Wheelchair ? "Yes" : "No");
-            }
-        }
 
+        [MaxLength(50), MinLength(3)]
+        public string GiftaidName { get; set; }
+
+        [MaxLength(50), MinLength(3)]
+        public string GiftaidAddressFirstLine { get; set; }
+
+        [MaxLength(7), MinLength(5), RegularExpression(@"^(GIR 0AA)|((([A-Z-[QVX]][0-9][0-9]?)|(([A-Z-[QVX]][A-Z-[IJZ]][0-9][0-9]?)|(([A-Z-[QVX]][0-9][A-HJKSTUW])|([A-Z-[QVX]][A-Z-[IJZ]][0-9][ABEHMNPRVWXY])))) [0-9][A-Z-[CIKMOV]]{2})$")]
+        public string GiftaidPostcode { get; set; }
+
+        // Returns a string representation of whether or not a wheelchair is required
+        public string WheelchairStatusString { get { return string.Format("{0}", this.Wheelchair ? "Yes" : "No"); } }
+
+        // Returns the total price of this ticket
         public decimal TotalPrice { get { return this.getTotalPrice(); } }
-        [Display(Name = "Total Price")]
-        public string TotalPriceString
-        {
-            get
-            {
-                return string.Format("£{0}", this.getTotalPrice());
-            }
-        }
 
+        // Returns a string representation of the total price, formatted as a currency
+        [Display(Name = "Total Price")]
+        public string TotalPriceString { get { return string.Format("£{0}", this.getTotalPrice()); } }
+
+        // Relationships
         public virtual Timetable Timetable { get; set; }
         public virtual Fare Fare { get; set; }
         public virtual Discount Discount { get; set; }
 
+        /// <summary>
+        /// Return the total price of this ticket based on the fare and any discounts that apply.
+        /// </summary>
         private decimal getTotalPrice()
         {
             decimal price = this.Fare.Price;

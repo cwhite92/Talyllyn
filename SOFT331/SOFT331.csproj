@@ -240,6 +240,10 @@
     <Compile Include="Migrations\201501262227082_AddAdvancedTicketsFieldToTrainsTable.Designer.cs">
       <DependentUpon>201501262227082_AddAdvancedTicketsFieldToTrainsTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501290041141_AddGiftaidColumnsToTicketsTable.cs" />
+    <Compile Include="Migrations\201501290041141_AddGiftaidColumnsToTicketsTable.Designer.cs">
+      <DependentUpon>201501290041141_AddGiftaidColumnsToTicketsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -424,6 +428,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501262227082_AddAdvancedTicketsFieldToTrainsTable.resx">
       <DependentUpon>201501262227082_AddAdvancedTicketsFieldToTrainsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501290041141_AddGiftaidColumnsToTicketsTable.resx">
+      <DependentUpon>201501290041141_AddGiftaidColumnsToTicketsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

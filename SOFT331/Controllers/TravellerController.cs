@@ -52,7 +52,10 @@ namespace SOFT331.Controllers
                     TimetableId = viewModel.TimetableId,
                     FareId = viewModel.FareId,
                     DiscountId = viewModel.DiscountId,
-                    Wheelchair = viewModel.Wheelchair
+                    Wheelchair = viewModel.Wheelchair,
+                    GiftaidName = viewModel.GiftaidName,
+                    GiftaidAddressFirstLine = viewModel.GiftaidAddressFirstLine,
+                    GiftaidPostcode = viewModel.GiftaidPostcode
                 });
                 db.SaveChanges();
                 // TODO: redirect to confirmation page
