@@ -27,6 +27,7 @@ namespace SOFT331.Controllers
                     Discount = ticket.Discount,
                     Timetable = ticket.Timetable,
                     Wheelchair = ticket.Wheelchair,
+                    DisabilitySupportRequest = ticket.DisabilitySupportRequest,
                     Ticket = ticket
                 });
             }
@@ -61,7 +62,8 @@ namespace SOFT331.Controllers
 
                     // Discount is optional - if we get a -1 that actually means no discount
                     DiscountId = viewModel.DiscountId,
-                    Wheelchair = viewModel.Wheelchair
+                    Wheelchair = viewModel.Wheelchair,
+                    DisabilitySupportRequest = viewModel.DisabilitySupportRequest
                 });
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -94,6 +96,7 @@ namespace SOFT331.Controllers
             viewModel.FareId = ticket.FareId;
             viewModel.DiscountId = ticket.DiscountId;
             viewModel.Wheelchair = ticket.Wheelchair;
+            viewModel.DisabilitySupportRequest = ticket.DisabilitySupportRequest;
 
             viewModel.TimetableList = new SelectList(db.Timetables, "Id", "Date", viewModel.TimetableId);
             viewModel.FareList = new SelectList(db.Fares, "Id", "PrettyName");
@@ -119,6 +122,7 @@ namespace SOFT331.Controllers
                 // Discount is optional - if we get a -1 that actually means no discount
                 ticket.DiscountId = viewModel.DiscountId;
                 ticket.Wheelchair = viewModel.Wheelchair;
+                ticket.DisabilitySupportRequest = viewModel.DisabilitySupportRequest;
                 db.Entry(ticket).State = EntityState.Modified;
 
                 db.SaveChanges();
@@ -151,6 +155,7 @@ namespace SOFT331.Controllers
             viewModel.Fare = ticket.Fare;
             viewModel.Discount = ticket.Discount;
             viewModel.Wheelchair = ticket.Wheelchair;
+            viewModel.DisabilitySupportRequest = ticket.DisabilitySupportRequest;
 
             return View(viewModel);
         }

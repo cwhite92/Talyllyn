@@ -53,6 +53,11 @@ namespace SOFT331.Controllers
                 query = query.Where(t => t.Wheelchair == true);
             }
 
+            if (viewModel.DisabilitySupportRequestOnly)
+            {
+                query = query.Where(t => t.DisabilitySupportRequest != null);
+            }
+
             if (viewModel.FromDate != null)
             {
                 query = query.Where(t => t.Timetable.Date >= viewModel.FromDate);

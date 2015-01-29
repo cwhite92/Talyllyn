@@ -24,6 +24,9 @@
             @Html.DisplayNameFor(model => model.Wheelchair)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.DisabilitySupportRequest)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Ticket.TotalPriceString)
         </th>
         <th></th>
@@ -45,6 +48,9 @@
         </td>
         <td>
             @Html.DisplayFor(model => item.Ticket.WheelchairStatusString)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.DisabilitySupportRequest)
         </td>
         <td>
             @Html.DisplayFor(model => item.Ticket.TotalPriceString)

@@ -24,8 +24,11 @@ namespace SOFT331.ViewModels
         [Display(Name = "To"), Column(TypeName = "Date"), DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? ToDate { get; set; }
 
-        [Display(Name = "Disabled Only")]
+        [Display(Name = "Wheelchair Requested")]
         public bool WheelchairOnly { get; set; }
+
+        [Display(Name = "Disability Requests Only")]
+        public bool DisabilitySupportRequestOnly { get; set; }
 
         // Used to populate the search parameters and for ticket breakdown
         public List<Fare> FareList { get; set; }
@@ -57,11 +60,5 @@ namespace SOFT331.ViewModels
                 return string.Format("£{0}", this.Tickets.Sum(t => t.TotalPrice));
             }
         }
-    }
-
-    public class TicketBreakdownItem
-    {
-        public Fare Fare { get; set; }
-        public int Count { get; set; }
     }
 }
