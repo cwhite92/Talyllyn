@@ -32,14 +32,14 @@ namespace SOFT331.Models
 
         [Required, Range(1, int.MaxValue), DefaultValue(DEFAULT_CAPACITY), Display(Name = "Seating Capacity")]
         public int Capacity {
-            get { return capacity; }
+            get { return this.capacity; }
             set { this.capacity = value; }
         }
 
         [Required, NotGreaterThanCapacity, Display(Name = "Advanced Tickets")]
         public int AdvancedTickets
         {
-            get { return advancedTickets; }
+            get { return this.advancedTickets; }
             set { this.advancedTickets = value; }
         }
 
