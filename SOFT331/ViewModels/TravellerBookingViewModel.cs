@@ -42,6 +42,12 @@ namespace SOFT331.ViewModels
         [RequiredWhenGiftAiding(ErrorMessage = "You must specify your postcode when gift aiding."), Display(Name = "Postcode"), MaxLength(7), MinLength(5), RegularExpression(@"^(GIR 0AA)|((([A-Z-[QVX]][0-9][0-9]?)|(([A-Z-[QVX]][A-Z-[IJZ]][0-9][0-9]?)|(([A-Z-[QVX]][0-9][A-HJKSTUW])|([A-Z-[QVX]][A-Z-[IJZ]][0-9][ABEHMNPRVWXY])))) [0-9][A-Z-[CIKMOV]]{2})$")]
         public string GiftaidPostcode { get; set; }
 
+        // If all the seats/advanced tickets on this timetable are taken, the user is unable to book
+        public bool Bookable
+        {
+            get { return true; }
+        }
+
         // Filled with possible fares and discounts from database
         public SelectList FareList { get; set; }
         public SelectList DiscountList { get; set; }

@@ -248,6 +248,14 @@
     <Compile Include="Migrations\201501291754069_CreateDisabilitySupportRequestField.Designer.cs">
       <DependentUpon>201501291754069_CreateDisabilitySupportRequestField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501291829388_MoveSeatsAndAdvancedTicketsToTimetables.cs" />
+    <Compile Include="Migrations\201501291829388_MoveSeatsAndAdvancedTicketsToTimetables.Designer.cs">
+      <DependentUpon>201501291829388_MoveSeatsAndAdvancedTicketsToTimetables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501291849356_OhGodWhatHappened.cs" />
+    <Compile Include="Migrations\201501291849356_OhGodWhatHappened.Designer.cs">
+      <DependentUpon>201501291849356_OhGodWhatHappened.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -268,7 +276,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\TicketStatisticsViewModels.cs" />
     <Compile Include="ViewModels\TicketViewModels.cs" />
-    <Compile Include="ViewModels\TimetablesCreateViewModel.cs" />
+    <Compile Include="ViewModels\TimetableViewModels.cs" />
     <Compile Include="ViewModels\TravellerBookingViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -438,6 +446,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501291754069_CreateDisabilitySupportRequestField.resx">
       <DependentUpon>201501291754069_CreateDisabilitySupportRequestField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501291829388_MoveSeatsAndAdvancedTicketsToTimetables.resx">
+      <DependentUpon>201501291829388_MoveSeatsAndAdvancedTicketsToTimetables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501291849356_OhGodWhatHappened.resx">
+      <DependentUpon>201501291849356_OhGodWhatHappened.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

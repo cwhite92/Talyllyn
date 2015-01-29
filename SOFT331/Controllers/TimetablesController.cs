@@ -42,14 +42,14 @@ namespace SOFT331.Controllers
         // GET: Timetables/Create
         public ActionResult Create()
         {
-            TimetablesCreateViewModel model = new TimetablesCreateViewModel
+            TimetableCreateViewModel viewModel = new TimetableCreateViewModel
             {
                 Timetable = new Timetable(),
                 TrainList = new SelectList(db.Trains, "Id", "Name"),
                 StationList = new SelectList(db.Stations, "Id", "Name")
             };
 
-            return View(model);
+            return View(viewModel);
         }
 
         // POST: Timetables/Create
@@ -57,7 +57,7 @@ namespace SOFT331.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(TimetablesCreateViewModel viewModel)
+        public ActionResult Create(TimetableCreateViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
@@ -76,6 +76,9 @@ namespace SOFT331.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+            viewModel.TrainList = new SelectList(db.Trains, "Id", "Name");
+            viewModel.StationList = new SelectList(db.Stations, "Id", "Name");
 
             return View(viewModel);
         }
