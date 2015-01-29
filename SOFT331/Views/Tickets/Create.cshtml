@@ -34,17 +34,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DiscountId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <label class="checkbox-inline">
-                    @Html.RadioButtonFor(model => model.DiscountId, -1)
-                    None
-                </label>
-                @foreach (Discount discount in Model.DiscountList)
-                {
-                    <label class="checkbox-inline">
-                        @Html.RadioButtonFor(model => model.DiscountId, discount.Id)
-                        @discount
-                    </label>
-                }
+                @Html.DropDownListFor(model => model.DiscountId, Model.DiscountList, "---", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.DiscountId, "", new { @class = "text-danger" })
             </div>
         </div>

@@ -171,6 +171,7 @@
     <Compile Include="Controllers\TicketStatisticsController.cs" />
     <Compile Include="Controllers\TimetablesController.cs" />
     <Compile Include="Controllers\TrainsController.cs" />
+    <Compile Include="Controllers\TravellerController.cs" />
     <Compile Include="Migrations\201501162123533_InitialMigration.cs" />
     <Compile Include="Migrations\201501162123533_InitialMigration.Designer.cs">
       <DependentUpon>201501162123533_InitialMigration.cs</DependentUpon>
@@ -260,6 +261,7 @@
     <Compile Include="ViewModels\TicketStatisticsViewModels.cs" />
     <Compile Include="ViewModels\TicketViewModels.cs" />
     <Compile Include="ViewModels\TimetablesCreateViewModel.cs" />
+    <Compile Include="ViewModels\TravellerBookingViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -357,6 +359,8 @@
     <Content Include="Views\Events\Edit.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
     <Content Include="Views\TicketStatistics\Index.cshtml" />
+    <Content Include="Views\Traveller\Book.cshtml" />
+    <Content Include="Views\Traveller\Confirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,29 +1,40 @@
 ﻿@using SOFT331.Models;
-@model SOFT331.ViewModels.TicketEditViewModel
-
+@model SOFT331.ViewModels.TravellerBookingViewModel
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Book";
 }
 
-<h2>Edit</h2>
+<h2>
+    Timetable for
+    @Html.DisplayFor(model => Model.Timetable.Date)
+</h2>
+
+<table class="table table-condensed">
+    <tr>
+        <th>Station</th>
+        <th>Arrival</th>
+        <th>Departure</th>
+    </tr>
+    @foreach (StationTimetable st in Model.Timetable.StationTimetables)
+    {
+        <tr>
+            <td>@Html.DisplayFor(model => st.Station.Name)</td>
+            <td>@Html.DisplayFor(model => st.Arrival)</td>
+            <td>@Html.DisplayFor(model => st.Departure)</td>
+        </tr>
+    }
+</table>
+
+<h2>Book Now</h2>
+<hr />
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Ticket</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TimetableId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.TimetableId, Model.TimetableList, "---", htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.TimetableId, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.TimetableId)
 
         <div class="form-group">
             @Html.LabelFor(model => model.FareId, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -53,12 +64,8 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

@@ -23,3 +23,7 @@ textarea {
 #ticket-statistics dd {
     margin-left: 275px;
 }
+
+#home-timetable-select {
+    margin: 0 auto;
+}

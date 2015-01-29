@@ -40,7 +40,7 @@ namespace SOFT331.Controllers
             TicketCreateViewModel viewModel = new TicketCreateViewModel();
             viewModel.TimetableList = new SelectList(db.Timetables, "Id", "Date");
             viewModel.FareList = new SelectList(db.Fares, "Id", "PrettyName");
-            viewModel.DiscountList = db.Discounts.ToList();
+            viewModel.DiscountList = new SelectList(db.Discounts, "Id", "Name");
 
             return View(viewModel);
         }
@@ -60,7 +60,7 @@ namespace SOFT331.Controllers
                     FareId = viewModel.FareId,
 
                     // Discount is optional - if we get a -1 that actually means no discount
-                    DiscountId = viewModel.DiscountId == -1 ? null : viewModel.DiscountId,
+                    DiscountId = viewModel.DiscountId,
                     Wheelchair = viewModel.Wheelchair
                 });
                 db.SaveChanges();
@@ -69,7 +69,7 @@ namespace SOFT331.Controllers
 
             viewModel.TimetableList = new SelectList(db.Timetables, "Id", "Date");
             viewModel.FareList = new SelectList(db.Fares, "Id", "PrettyName");
-            viewModel.DiscountList = db.Discounts.ToList();
+            viewModel.DiscountList = new SelectList(db.Discounts, "Id", "Name");
 
             return View(viewModel);
         }
@@ -97,7 +97,7 @@ namespace SOFT331.Controllers
 
             viewModel.TimetableList = new SelectList(db.Timetables, "Id", "Date", viewModel.TimetableId);
             viewModel.FareList = new SelectList(db.Fares, "Id", "PrettyName");
-            viewModel.DiscountList = db.Discounts.ToList();
+            viewModel.DiscountList = new SelectList(db.Discounts, "Id", "Name");
 
             return View(viewModel);
         }
@@ -117,7 +117,7 @@ namespace SOFT331.Controllers
                 ticket.FareId = viewModel.FareId;
 
                 // Discount is optional - if we get a -1 that actually means no discount
-                ticket.DiscountId = viewModel.DiscountId == -1 ? null : viewModel.DiscountId;
+                ticket.DiscountId = viewModel.DiscountId;
                 ticket.Wheelchair = viewModel.Wheelchair;
                 db.Entry(ticket).State = EntityState.Modified;
 
@@ -127,7 +127,7 @@ namespace SOFT331.Controllers
 
             viewModel.TimetableList = new SelectList(db.Timetables, "Id", "Date", viewModel.TimetableId);
             viewModel.FareList = new SelectList(db.Fares, "Id", "PrettyName");
-            viewModel.DiscountList = db.Discounts.ToList();
+            viewModel.DiscountList = new SelectList(db.Discounts, "Id", "Name");
             return View(viewModel);
         }
 

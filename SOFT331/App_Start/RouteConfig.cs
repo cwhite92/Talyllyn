@@ -18,6 +18,14 @@ namespace SOFT331
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            // Used for the booking page for a certain timetable
+            routes.MapRoute(
+               "Date",
+               "{controller}/{action}/{day}/{month}/{year}",
+               new { controller = "Traveller", action = "Book"},
+               new { day = @"\d{2}", month = @"\d{2}", year = @"\d{4}" }
+           );
         }
     }
 }

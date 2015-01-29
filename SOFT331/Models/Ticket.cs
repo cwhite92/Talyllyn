@@ -58,6 +58,7 @@ namespace SOFT331.Models
         }
     }
 
+    // TODO: move into its own file?
     public class OneWheelchairPerTrainAttribute : ValidationAttribute
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,7 +11,7 @@ namespace SOFT331.ViewModels
 {
     public class BaseTicketViewModel
     {
-        [Required, Display(Name = "Date of Travel")]
+        [Required, Display(Name = "Date of Travel"), Column(TypeName = "Date"), DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public int TimetableId { get; set; }
         public Timetable Timetable { get; set; }
 
@@ -22,7 +23,7 @@ namespace SOFT331.ViewModels
         public int? DiscountId { get; set; }
         public Discount Discount { get; set; }
 
-        [OneWheelchairPerTrain, Display(Name = "Wheelchair Space Required")]
+        [OneWheelchairPerTrain, Display(Name = "Wheelchair Space Required?")]
         public bool Wheelchair { get; set; }
     }
 
@@ -30,7 +31,7 @@ namespace SOFT331.ViewModels
     {
         public SelectList TimetableList { get; set; }
         public SelectList FareList { get; set; }
-        public List<Discount> DiscountList { get; set; }
+        public SelectList DiscountList { get; set; }
     }
 
     public class TicketEditViewModel : TicketCreateViewModel
