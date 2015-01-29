@@ -59,6 +59,7 @@ namespace SOFT331.Controllers
                     FareId = viewModel.FareId,
                     DiscountId = viewModel.DiscountId,
                     Wheelchair = viewModel.Wheelchair,
+                    DisabilitySupportRequest = viewModel.DisabilitySupportRequest,
                     GiftaidName = viewModel.GiftaidName,
                     GiftaidAddressFirstLine = viewModel.GiftaidAddressFirstLine,
                     GiftaidPostcode = viewModel.GiftaidPostcode

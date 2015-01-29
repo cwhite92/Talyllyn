@@ -29,6 +29,9 @@ namespace SOFT331.ViewModels
         [OneWheelchairPerTrain, Display(Name = "Wheelchair Space Required?")]
         public bool Wheelchair { get; set; }
 
+        [DataType(DataType.MultilineText), MaxLength(2000), Display(Name = "Disability Support Requests")]
+        public string DisabilitySupportRequest { get; set; }
+
         // Whether or not the traveller wishes to giftaid their ticket
         [Display(Name = "Gift Aid")]
         public bool Giftaid { get; set; }
