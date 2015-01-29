@@ -18,7 +18,22 @@ namespace SOFT331.Controllers
         [AllowAnonymous]
         public ActionResult Index()
         {
-            return View(db.Timetables.ToList());
+            List<TimetableIndexViewModel> timetables = new List<TimetableIndexViewModel>();
+
+            foreach (Timetable timetable in db.Timetables)
+            {
+                timetables.Add(new TimetableIndexViewModel
+                {
+                    Id = timetable.Id,
+                    Date = timetable.Date,
+                    Seats = timetable.Seats,
+                    AdvancedTickets = timetable.AdvancedTickets,
+                    Train = timetable.Train,
+                    StationTimetables = timetable.StationTimetables
+                });
+            }
+
+            return View(timetables);
         }
 
         // GET: Timetables/Details/5
@@ -44,7 +59,6 @@ namespace SOFT331.Controllers
         {
             TimetableCreateViewModel viewModel = new TimetableCreateViewModel
             {
-                Timetable = new Timetable(),
                 TrainList = new SelectList(db.Trains, "Id", "Name"),
                 StationList = new SelectList(db.Stations, "Id", "Name")
             };
@@ -61,14 +75,22 @@ namespace SOFT331.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Timetables.Add(viewModel.Timetable);
+                Timetable timetable = new Timetable
+                {
+                    Date = viewModel.Date,
+                    TrainId = viewModel.TrainId,
+                    Seats = viewModel.Seats,
+                    AdvancedTickets = viewModel.AdvancedTickets
+                };
+
+                db.Timetables.Add(timetable);
 
                 for (int i = 0; i < viewModel.StationTimetables.Count; i++)
                 {
                     // Only add the entry if station ID isn't null, this is when a user doesn't fill out the entire form
                     if (viewModel.StationTimetables[i].StationId != null)
                     {
-                        viewModel.StationTimetables[i].TimetableId = viewModel.Timetable.Id;
+                        viewModel.StationTimetables[i].TimetableId = timetable.Id;
                         db.StationTimetables.Add(viewModel.StationTimetables[i]);
                     }
                 }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -21,6 +22,12 @@ namespace SOFT331.ViewModels
         // A nice round default number
         public int maximumStops = 10;
 
+        [Required, Display(Name = "Production Year"), Column(TypeName = "Date"), DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime Date { get; set; }
+
+        [Required]
+        public int TrainId { get; set; }
+
         [Required, Range(1, int.MaxValue), DefaultValue(DEFAULT_SEATS), Display(Name = "# of Seats")]
         public int Seats
         {
@@ -34,9 +41,6 @@ namespace SOFT331.ViewModels
             get { return this.advancedTickets; }
             set { this.advancedTickets = value; }
         }
-
-        // The timetable record
-        public Timetable Timetable { get; set; }
 
         // This will be populated with arrival/departure times
         public IList<StationTimetable> StationTimetables { get; set; }
@@ -60,6 +64,22 @@ namespace SOFT331.ViewModels
                 stationList = value;
             }
         }
+    }
+
+    public class TimetableIndexViewModel
+    {
+        public int Id { get; set; }
+        public DateTime Date { get; set; }
+        public Train Train { get; set; }
+
+        [Display(Name = "Number of Seats")]
+        public int Seats { get; set; }
+
+        [Display(Name = "Number of Advanced Tickets")]
+        public int AdvancedTickets { get; set; }
+
+        [Display(Name = "Number of Stops")]
+        public IEnumerable<StationTimetable> StationTimetables { get; set; }
     }
 
     public class NotGreaterThanSeatsAttribute : ValidationAttribute

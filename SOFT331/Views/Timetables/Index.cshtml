@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SOFT331.Models.Timetable>
+﻿@model IEnumerable<SOFT331.ViewModels.TimetableIndexViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -15,10 +15,16 @@
             @Html.DisplayNameFor(model => model.Date)
         </th>
         <th>
-            Train
+            @Html.DisplayNameFor(model => model.Train)
         </th>
         <th>
-            Number of Stops
+            @Html.DisplayNameFor(model => model.Seats)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdvancedTickets)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StationTimetables)
         </th>
         <th></th>
     </tr>
@@ -26,10 +32,16 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Date)
+            @Html.DisplayFor(model => item.Date)
         </td>
         <td>
-            @item.Train.Name
+            @Html.DisplayFor(model => item.Train.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.Seats)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.AdvancedTickets)
         </td>
         <td>
             @item.StationTimetables.Count()

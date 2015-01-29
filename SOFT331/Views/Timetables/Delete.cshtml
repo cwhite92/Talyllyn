@@ -14,12 +14,46 @@
         <dt>
             @Html.DisplayNameFor(model => model.Date)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Date)
         </dd>
-
+        <dt>
+            @Html.DisplayNameFor(model => model.Train)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Train.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Seats)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Seats)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AdvancedTickets)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AdvancedTickets)
+        </dd>
     </dl>
+
+    <h3>Stops</h3>
+    <table class="table table-condensed">
+        <tr>
+            <th>Station</th>
+            <th>Arrival Time</th>
+            <th>Departure Time</th>
+        </tr>
+
+        @foreach (var stop in Model.StationTimetables)
+        {
+            <tr>
+                <td>@stop.Station.Name</td>
+                <td>@stop.Arrival</td>
+                <td>@stop.Departure</td>
+            </tr>
+        }
+    </table>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
