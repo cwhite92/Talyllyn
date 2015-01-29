@@ -29,6 +29,8 @@ namespace SOFT331.Controllers
                 return Redirect(string.Format("/Traveller/Book/{0}", viewModel.Timetable.Date.ToString("dd/MM/yyyy")));
             }
 
+            viewModel.Timetables = new SelectList(db.Timetables.Where(t => t.Date > DateTime.Today), "Id", "Date");
+
             return View(viewModel);
         }
 

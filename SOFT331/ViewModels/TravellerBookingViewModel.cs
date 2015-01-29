@@ -14,7 +14,7 @@ namespace SOFT331.ViewModels
         public SelectList Timetables { get; set; }
 
         // The timetable that gets selected on the homepage
-        [Required]
+        [Required, Range(1, int.MaxValue)]
         public int TimetableId { get; set; }
         public Timetable Timetable { get; set; }
 
@@ -45,7 +45,17 @@ namespace SOFT331.ViewModels
         // If all the seats/advanced tickets on this timetable are taken, the user is unable to book
         public bool Bookable
         {
-            get { return true; }
+            get {
+                using(DatabaseContext db = new DatabaseContext())
+                {
+                    if (this.TimetableId == 0) return false;
+
+                    Timetable timetable = db.Timetables.Find(this.TimetableId);
+                    int numberOfTickets = db.Tickets.Where(t => t.TimetableId == this.TimetableId).Count();
+
+                    return (numberOfTickets < timetable.Seats) && (numberOfTickets < timetable.AdvancedTickets);
+                }
+            }
         }
 
         // Filled with possible fares and discounts from database

@@ -64,7 +64,7 @@ namespace SOFT331.Controllers
                     GiftaidPostcode = viewModel.GiftaidPostcode
                 });
                 db.SaveChanges();
-                // TODO: redirect to confirmation page
+
                 return RedirectToAction("Confirmation");
             }
 
