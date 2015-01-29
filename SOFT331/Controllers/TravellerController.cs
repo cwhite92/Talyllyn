@@ -53,7 +53,7 @@ namespace SOFT331.Controllers
 
             if(ModelState.IsValid)
             {
-                db.Tickets.Add(new Ticket
+                Ticket ticket = new Ticket
                 {
                     TimetableId = viewModel.TimetableId,
                     FareId = viewModel.FareId,
@@ -63,10 +63,13 @@ namespace SOFT331.Controllers
                     GiftaidName = viewModel.GiftaidName,
                     GiftaidAddressFirstLine = viewModel.GiftaidAddressFirstLine,
                     GiftaidPostcode = viewModel.GiftaidPostcode
-                });
+                };
+
+                db.Tickets.Add(ticket);
                 db.SaveChanges();
 
-                return RedirectToAction("Confirmation");
+                ViewBag.TicketId = ticket.Id;
+                return View("Confirmation");
             }
 
             // Stuff to populate form elements
@@ -74,11 +77,6 @@ namespace SOFT331.Controllers
             viewModel.DiscountList = new SelectList(db.Discounts, "Id", "Name");
 
             return View(viewModel);
-        }
-
-        public ActionResult Confirmation()
-        {
-            return View();
         }
     }
 }

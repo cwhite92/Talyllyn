@@ -277,7 +277,7 @@
     <Compile Include="ViewModels\TicketStatisticsViewModels.cs" />
     <Compile Include="ViewModels\TicketViewModels.cs" />
     <Compile Include="ViewModels\TimetableViewModels.cs" />
-    <Compile Include="ViewModels\TravellerBookingViewModel.cs" />
+    <Compile Include="ViewModels\TravellerViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
