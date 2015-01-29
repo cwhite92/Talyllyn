@@ -13,7 +13,7 @@ namespace SOFT331.Controllers
         {
             // Load all of the timetable dates into a select list
             TravellerBookingViewModel viewModel = new TravellerBookingViewModel();
-            viewModel.Timetables = new SelectList(db.Timetables.ToList(), "Id", "Date");
+            viewModel.Timetables = new SelectList(db.Timetables.Where(t => t.Date > DateTime.Today), "Id", "Date");
 
             return View(viewModel);
         }

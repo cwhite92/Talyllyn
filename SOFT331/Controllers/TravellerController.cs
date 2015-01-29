@@ -14,6 +14,12 @@ namespace SOFT331.Controllers
         {
             DateTime requestedDate = new DateTime(year, month, day);
 
+            // Double check that the user isn't trying to book for today or the past
+            if (requestedDate <= DateTime.Today)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             TravellerBookingViewModel viewModel = new TravellerBookingViewModel();
 
             var results = db.Timetables.Where(t => t.Date == requestedDate);
