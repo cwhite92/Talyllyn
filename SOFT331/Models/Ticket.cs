@@ -22,6 +22,9 @@ namespace SOFT331.Models
         [Required, OneWheelchairPerTrain]
         public bool Wheelchair { get; set; }
 
+        [DataType(DataType.MultilineText), MaxLength(2000)]
+        public string DisabilitySupportRequest { get; set; }
+
         [MaxLength(50), MinLength(3)]
         public string GiftaidName { get; set; }
 
