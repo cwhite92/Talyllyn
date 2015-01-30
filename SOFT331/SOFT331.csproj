@@ -252,10 +252,6 @@
     <Compile Include="Migrations\201501291829388_MoveSeatsAndAdvancedTicketsToTimetables.Designer.cs">
       <DependentUpon>201501291829388_MoveSeatsAndAdvancedTicketsToTimetables.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201501291849356_OhGodWhatHappened.cs" />
-    <Compile Include="Migrations\201501291849356_OhGodWhatHappened.Designer.cs">
-      <DependentUpon>201501291849356_OhGodWhatHappened.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -449,9 +445,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501291829388_MoveSeatsAndAdvancedTicketsToTimetables.resx">
       <DependentUpon>201501291829388_MoveSeatsAndAdvancedTicketsToTimetables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201501291849356_OhGodWhatHappened.resx">
-      <DependentUpon>201501291849356_OhGodWhatHappened.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

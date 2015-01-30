@@ -78,7 +78,9 @@ namespace SOFT331.ViewModels
             if (!giftAiding) return ValidationResult.Success;
 
             // Otherwise, if this field is null/empty, validation fails
-            return new ValidationResult(this.FormatErrorMessage(validationContext.DisplayName));
+            if ((string)value == null) return new ValidationResult(this.FormatErrorMessage(validationContext.DisplayName));
+
+            return ValidationResult.Success;
         }
     }
 }
