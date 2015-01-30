@@ -22,10 +22,10 @@ namespace SOFT331.ViewModels
         // A nice round default number
         public int maximumStops = 10;
 
-        [Required, Display(Name = "Production Year"), Column(TypeName = "Date"), DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [Required, Display(Name = "Date"), Column(TypeName = "Date"), DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; }
 
-        [Required]
+        [Required, Display(Name = "Train")]
         public int TrainId { get; set; }
 
         [Required, Range(1, int.MaxValue), DefaultValue(DEFAULT_SEATS), Display(Name = "# of Seats")]
